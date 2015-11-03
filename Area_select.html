@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>地区选择插件</title>
+
+<script language="javascript" src="js/JAreaData.js"></script>
+
+<script language="javascript" src="js/JAreaSelect.js"></script>
+
+<style>
+
+.select_span {
+
+	margin:0px 5px;}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+<div id="area-select-box"></div>
+
+<div id="area-select-box-2"></div>
+
+
+
+</body>
+
+<script type="text/javascript">
+
+    new JAreaSelect({
+
+        data : AREA_DATA,
+
+        container : "area-select-box",
+
+        maxAreaLevel : 3,
+
+		suffix : 0,
+
+        showCountry : true,
+
+        ids : [1,0,0,0],
+
+        autoInit : true
+
+    });
+
+
+
+    new JAreaSelect({
+
+        data : AREA_DATA,
+
+        container : "area-select-box-2",
+
+        maxAreaLevel : 3,
+
+		suffix : 1,
+
+        showCountry : true,
+
+        ids : [1,0,0,0],
+
+        autoInit : true
+
+    });
+
+
+
+</script>
+
+</html>
+

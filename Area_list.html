@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>地区选择插件</title>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script language="javascript" src="js/JAreaData.js"></script>
+
+<script language="javascript" src="js/JAreaList.js"></script>
+
+<style>
+
+    .sh-area-box {
+
+        background: none repeat scroll 0 0 #FFFFFF;
+
+        border: 1px solid #B2B2B2;
+
+        box-shadow: 0 0 3px #A8A8A8;
+
+        left: 0;
+
+        line-height: 22px;
+
+        padding: 2px 3px 3px;
+
+        position: absolute;
+
+        top: 20px;
+
+        width: 446px;
+
+        z-index: 88;
+
+        font-size: 12px;
+
+    }
+
+    .sh-area-body {
+
+        background: none repeat scroll 0 0 #FFFFFF;
+
+        padding: 0 4px;
+
+        position: relative;
+
+        z-index: 2;
+
+    }
+
+    .sh-area-all {
+
+        padding:6px 0px;
+
+    }
+
+    .sh-area-link, .sh-area-link:visited {
+
+        color: #333333;
+
+        display: block;
+
+        padding: 2px 10px;
+
+        text-decoration: none;
+
+        text-align: left;
+
+        margin-right: 10px;
+
+    }
+
+    .sh-area-link:hover {
+
+        background-color: #F1F1F1;
+
+    }
+
+    .sh-area-body .sh-area-direct {
+
+        color:#CC0000;
+
+        font-weight: bold;
+
+        padding: 5px 6px 0 6px;
+
+    }
+
+    .sh-area-body .sh-direct-box {
+
+        padding: 10px 0px;
+
+        border-bottom: 1px dashed #e1e1e1;
+
+        border-top: 1px dashed #e1e1e1;
+
+    }
+
+    .sh-area-body .sh-province-box {
+
+        padding: 10px 0;
+
+    }
+
+    .sh-area-body .sh-list-item {
+
+        list-style: none;
+
+        display: inline-block;
+
+        width: 20%;;
+
+    }
+
+    .sh-province-box > .sh-list-item {
+
+        position: relative;
+
+    }
+
+    .sh-province-box .sh-area-city {
+
+        position: absolute;
+
+        left: 0;
+
+        top: 25px;
+
+        border:1px solid #CCCCCC;
+
+        background: #ffffff;
+
+        padding: 10px;
+
+        width: 230px;
+
+        z-index:100 ;
+
+        display: none;
+
+    }
+
+    .sh-area-city .sh-list-item {
+
+        width: 33%;
+
+    }
+
+    .sh-area-city .sh-list-item > .sh-area-link {
+
+        margin: 0;
+
+    }
+
+
+
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+
+
+</body>
+
+<script type="text/javascript">
+
+
+
+new JAreaList({
+
+    data : AREA_DATA,
+
+    container:'body',
+
+    direct : ['北京', '上海', '天津', '重庆'],
+
+    area : ['江浙沪', '华东区', '华南区', '华中区', '华北区', '北京', '上海', '天津', '重庆', '海外']
+
+});
+
+</script>
+
+</html>
+

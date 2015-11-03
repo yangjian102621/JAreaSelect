@@ -1,0 +1,31 @@
+/* CSS Document */
+
+/* 草绿色分页样式 */
+
+.page_handle_box { margin-top:10px; zoom:1; overflow:hidden; height:31px;}
+
+.page_prev{ float:left; background-image:url(../images/prev_page_grass.gif); background-repeat:no-repeat; width:86px; height:31px; text-decoration:none;}
+
+
+
+.page_text { float:left; background-image:url(../images/page_list_grass.jpg); background-repeat:repeat-x; color:#616B00; font-size:14px; font-weight:bold; height:31px; line-height:31px; margin-left:5px; padding:0px 8px; text-decoration:none; border:1px solid #9AAA03; border-top:none;}
+
+.page_text:hover {background-image:url(../images/page_list_grass_bak.jpg); background-repeat:repeat-x; color:#923400; border:1px solid #AC5500; border-top:none;}
+
+
+
+.page_list { float:left; background-image:url(../images/page_list_grass.jpg); background-repeat:repeat-x; color:#616B00; font-size:14px; font-weight:bold; height:31px; line-height:31px; margin-left:5px; padding:0px 5px; text-decoration:none; border:1px solid #9AAA03; border-top:none;}
+
+.page_list:hover {background-image:url(../images/page_list_grass_bak.jpg); background-repeat:repeat-x; color:#923400; border:1px solid #AC5500; border-top:none;}
+
+.page_now {float:left; background-image:url(../images/page_list_grass_bak.jpg); background-repeat:repeat-x; color:#923400; font-size:14px; font-weight:bold; height:31px; line-height:31px; margin-left:5px; padding:0px 5px; border:1px solid #AC5500; border-top:none;}
+
+
+
+.page_input_span { float:left;border:1px solid #9AAA03; height:29px; margin-left:5px; background-color:#FFF;}
+
+.page_input_span input { border:0px solid red; height:24px; line-height:24px; color:#616B00; font-size:14px; font-weight:bold; width:30px; text-align:center; }
+
+
+
+.page_next { float:left; background-image:url(../images/next_page_grass.gif); background-repeat:no-repeat; height:31px; line-height:31px; width:86px; margin-left:5px;}
