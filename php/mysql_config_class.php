@@ -18,7 +18,7 @@ if ( !defined('DEFAULT_CACHE_DIR') ) {
 
 }
 
-class mysql_config {
+class mysqli_config {
 
 	/**
 

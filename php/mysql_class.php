@@ -60,17 +60,17 @@ class mysql {
 
 	private function connect() {
 
-		if ( mysql_config::$pconnect ) {
+		if ( mysqli_config::$pconnect ) {
 
-			$this->link = mysql_pconnect(mysql_config::$db_host, mysql_config::$db_user,
+			$this->link = mysqli_pconnect(mysqli_config::$db_host, mysqli_config::$db_user,
 
-				 mysql_config::$db_pass);
+				 mysqli_config::$db_pass);
 
 		} else {
 
-			$this->link = mysql_connect(mysql_config::$db_host, mysql_config::$db_user,
+			$this->link = mysqli_connect(mysqli_config::$db_host, mysqli_config::$db_user,
 
-				 mysql_config::$db_pass);
+				 mysqli_config::$db_pass);
 
 		}
 
@@ -92,17 +92,17 @@ class mysql {
 
 		//set the charset
 
-		mysql_query("SET NAMES '".mysql_config::$charset."'");
+		mysqli_query($this->link, "SET NAMES '".mysqli_config::$charset."'");
 
-		mysql_query("SET CHARACTER_SET_CLIENT='".mysql_config::$charset."'");
+		mysqli_query($this->link, "SET CHARACTER_SET_CLIENT='".mysqli_config::$charset."'");
 
-		mysql_query("SET CHARACTER_SET_RESULTS='".mysql_config::$charset."'");
+		mysqli_query($this->link, "SET CHARACTER_SET_RESULTS='".mysqli_config::$charset."'");
 
 		
 
 		//select the pointed database
 
-		if ( ! mysql_select_db( mysql_config::$db_data, $this->link ) ) {
+		if ( ! mysqli_select_db($this->link, mysqli_config::$db_data ) ) {
 
 			$this->fatalError("cannot selected the given database ！");
 
@@ -200,7 +200,7 @@ class mysql {
 
 			
 
-			if ( ($result = mysql_query($query, $this->link) ) !== FALSE ) {
+			if ( ($result = mysqli_query($this->link, $query) ) !== FALSE ) {
 
 				return $result;
 
@@ -469,10 +469,9 @@ class mysql {
 			if ( $key_var_pair !== NULL ) {
 
 				$query = " UPDATE " . $table_name . " SET  ".$key_var_pair."  WHERE " . $where. "";
-
 				if ( $this->query( $query ) ) {
 
-					return TRUE;
+					return mysqli_affected_rows($this->link);
 
 				}
 
@@ -510,7 +509,7 @@ class mysql {
 
 			if ( $result != FALSE ) {
 
-				return mysql_fetch_assoc( $result );
+				return mysqli_fetch_assoc( $result );
 
 			} 
 
@@ -544,7 +543,7 @@ class mysql {
 
 			if ($result) {
 
-				return mysql_num_rows($result);
+				return mysqli_num_rows($result);
 
 			}
 
@@ -620,7 +619,7 @@ class mysql {
 
 			$i = 0;
 
-			while ($rows = mysql_fetch_array($result)) {
+			while ($rows = mysqli_fetch_assoc($result)) {
 
 				$array[$i] = $rows;
 
@@ -658,7 +657,7 @@ class mysql {
 
 				$i = 0;
 
-				while ( ($rows = mysql_fetch_row($result)) != FALSE ) {
+				while ( ($rows = mysqli_fetch_row($result)) != FALSE ) {
 
 					$fileds_array[$i] = $rows[0];
 
@@ -686,7 +685,7 @@ class mysql {
 
 	public function getInsertId() {
 
-		return mysql_insert_id( $this->link );
+		return mysqli_insert_id( $this->link );
 
 	}
 
@@ -744,7 +743,7 @@ class mysql {
 
 		if ($this->link != NULL) {
 
-			mysql_close($this->link);
+			mysqli_close($this->link);
 
 		}
 

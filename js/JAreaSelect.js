@@ -12,25 +12,22 @@
 
 var JAreaSelect = function( options ) {
 
-    options = options || {};
-    var __suffix = "0";
-	if ( options.suffix ) __suffix = options.suffix;
+	var obj = {};
 	//初始化参数
-	this.options = {
-		data : {},      /* 地区数据数组 */
-		ids : [1,0,0,0],        /* 国家，省，市，县的初始化id */
+	var defaults = {
+		data : __AREADATA__,      /* 地区数据数组 */
+		prov : 0, //省
+		city : 0, //市
+		dist : 0, //区
 		container : 'area_select_box',
-		keys : ['country', 'province', 'city', 'district'],
 		//提示内容
 		tipArray : {
-			'country'  : '-请选择国家-',
 			'province' : '-请选择省份-',
 			'city'	   : '-请选择城市-',
 			'district' : '-请选择地区-'
 		},
 		//每个select标签的父级容器ID
-		boxs_id : {
-			'country'  : 'country_box_'+__suffix,
+		boxId : {
 			'province' : 'province_box_'+__suffix,
 			'city'	   : 'city_box_'+__suffix,
 			'district' : 'district_box_'+__suffix
@@ -38,62 +35,56 @@ var JAreaSelect = function( options ) {
 
 		//select name
 		selectName : {
-			'country'  : 'country_id_'+__suffix,
 			'province' : 'province_id_'+__suffix,
 			'city'	   : 'city_id_'+__suffix,
 			'district' : 'district_id_'+__suffix
 		},
 		//select id
 		selectId : {
-			'country'  : 'country_select_id_'+__suffix,
 			'province' : 'province_select_id_'+__suffix,
 			'city'	   : 'city_select_id_'+__suffix,
 			'district' : 'district_select_id_'+__suffix
 		},
 		/* 各个select对应的父级地区select的id */
 		parentAreaId : {
-			'country'  : '',
 			'province' : 'country_select_id_'+__suffix,
 			'city'	   : 'province_select_id_'+__suffix,
 			'district' : 'city_select_id_'+__suffix
 		},
 		/* 父级地区联动的子级地区的id */
 		childAreaId : {
-			'country'  : 'province_select_id_'+__suffix,
 			'province' : 'city_select_id_'+__suffix,
 			'city'	   : 'district_select_id_'+__suffix,
 			'district' : ''
 		},
         /*地址字符串*/
         address : '' ,
-        /* 最多加载的区域级别, 最多为4级 */
-        maxAreaLevel : 4,
-
-        showCountry : true,     //是否显示国家
-
-        autoInit : false    //是否自动初始化
+		selectClassName : 'form-control', //select class名称
+        /* 最多加载的区域级别, 最多为3级 */
+        loadLevel : 3
 
 	};
 
     /* 合并参数 */
-    for ( var key in options ) this.options[key] = options[key];
+    for ( var key in options ) {
+	    defaults[key] = options[key];
+    }
+	obj.options = defaults;
 
-    if ( this.options.maxAreaLevel > 4 ) this.options.maxAreaLevel = 4;
+    if ( obj.options.loadLevel > 3 ) {
+	    obj.options.loadLevel = 3;
+    }
 
-	/**
-	 * 创建元素并添加属性
-	 * @param			string		tag		创建元素的tagName
-	 * @param			Object		attr	元素的属性对象attribu
-	 */
-	JAreaSelect.prototype.createEle = function( tag, attr ) {
+	//创建元素
+	obj.create = function( tag, attr ) {
 		var ele = document.createElement(tag);
 		for ( var name in attr ) {
 			if ( attr.hasOwnProperty(name) ) {
 				ele[name] = attr[name];
 			}
-            if(name=='selected'){
-                if(attr.selected=='selected'){
-                    this.options.address += ele.innerHTML;
+            if( name == 'selected' ){
+                if( attr.selected=='selected' ){
+                    obj.options.address += ele.innerHTML;
                 }
             }
 		}
@@ -107,7 +98,7 @@ var JAreaSelect = function( options ) {
      * @param    _id    对应元素数据库中的Id
      * @param   show    是否显示该元素
      */
-    JAreaSelect.prototype.initSelect = function (name, _box_id, _id, show) {
+    obj.initSelect = function (name, _box_id, _id, show) {
         _id = _id || 0;
         var that = this;
         //创建select
@@ -214,4 +205,6 @@ var JAreaSelect = function( options ) {
         return this.options.address;
     }
     if ( this.options.autoInit ) this.initAreas();
+
+	return obj;
 };
