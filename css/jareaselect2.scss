@@ -1,0 +1,75 @@
+$borderColor : #dddddd;
+$activeBorderColor : #edd28b;
+$linkTextColor : #cc0000;
+.jarea-select-box {
+  border: 1px solid $borderColor;
+  padding: 10px;
+  position: absolute;
+
+  a {
+    font: 700 15px/30px 'microsoft yahei';
+    color: $linkTextColor;
+  }
+
+  .tab-ul {
+    padding:0;
+    margin: 0;
+    clear: both;
+    word-spacing: 0px;
+    font-size: 0;
+
+    .tab-item {
+      list-style: none;
+      display: inline-block;
+      padding: 0px 5px;
+      margin: 0px 2px;
+      border: 1px solid $borderColor;
+      border-bottom: none;
+      a {text-decoration: none}
+      //padding: ;
+    }
+
+    .tab-item.active {
+      border: 2px solid $activeBorderColor;
+      border-bottom: none;
+      position: relative;
+      top: 2px;
+      background-color: #ffffff;
+      z-index: 10;
+    }
+  }
+
+  //选项卡内容panel
+  .tab-content {
+    border-top:2px solid $activeBorderColor;
+    width: 400px;
+    height: 200px;
+
+    .tab-panel {
+      ul {
+        margin: 0;
+        padding:0;
+        overflow: hidden;
+        clear: both;
+
+        li {
+          list-style: none;
+          float: left;
+          padding: 5px 24px;
+
+          a {
+            font: 14px/150% Arial,Verdana,"\5b8b\4f53";
+            text-decoration: none;
+            display: block;
+            padding: 2px 5px;
+
+            &:hover {
+              background-color: $linkTextColor;
+              color: #ffffff ;
+            }
+          }
+        }
+      }
+    }
+  }
+}

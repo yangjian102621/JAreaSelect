@@ -20,7 +20,7 @@ $mysql = mysql::getInstance();
 
 $_table = "area";
 
-//$list = $mysql->getList("SELECT * FROM `area` WHERE name='市辖区' OR name='县'");
+//$list = $mysql->getList("SELECT * FROM `area` WHERE pid IN (SELECT id FROM area WHERE `name` in('北京','天津', '上海','重庆'))");
 //
 //foreach ( $list as $value ) {
 //	$data['pid'] = $value['pid'];
@@ -74,11 +74,11 @@ foreach ( $province as $value ) {
 
 }
 $buffer = "var __AREADATA__ = {\n";
-$buffer .= "\t'p' : {";
+$buffer .= "\t'prov' : {";
 $buffer .= $p."}, \n";
-$buffer .= "\t'c' : {";
+$buffer .= "\t'city' : {";
 $buffer .= $c."}, \n";
-$buffer .= "\t'd' : {";
+$buffer .= "\t'dist' : {";
 $buffer .= $d."}, \n";
 $buffer .= "};";
 
