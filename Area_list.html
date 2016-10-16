@@ -9,47 +9,52 @@
     <title>地区选择插件</title>
     <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/JAreaData.js"></script>
-    <script type="text/javascript" src="js/JAreaSelect.js"></script>
+    <script type="text/javascript" src="js/JAreaSelect2.js"></script>
 
 </head>
 
 <body>
-    <div class="jarea-select-box">
-        <ul class="tab-ul">
-            <li class="tab-item"><a href="#prov">广东省</a></li>
-            <li class="tab-item active"><a href="#city">东莞市</a></li>
-            <li class="tab-item"><a href="#dist">南城区</a></li>
-        </ul>
+    <div id="area-select"></div>
+    <!--<div class="jarea-select-box">-->
+        <!--<ul class="tab-ul">-->
+            <!--<li class="tab-item"><a href="#prov">广东省</a></li>-->
+            <!--<li class="tab-item active"><a href="#city">东莞市</a></li>-->
+            <!--<li class="tab-item"><a href="#dist">南城区</a></li>-->
+        <!--</ul>-->
 
-        <div class="tab-content">
-            <div class="tab-panel tab-prov">
-                <ul>
-                    <li><a href="javascript:void(0);">广州市</a></li>
-                    <li><a href="javascript:void(0);">深圳市</a></li>
-                    <li><a href="javascript:void(0);">东莞市</a></li>
-                    <li><a href="javascript:void(0);">佛山市</a></li>
-                    <li><a href="javascript:void(0);">广州市</a></li>
-                    <li><a href="javascript:void(0);">深圳市</a></li>
-                    <li><a href="javascript:void(0);">东莞市</a></li>
-                    <li><a href="javascript:void(0);">佛山市</a></li>
-                    <li><a href="javascript:void(0);">广州市</a></li>
-                    <li><a href="javascript:void(0);">深圳市</a></li>
-                    <li><a href="javascript:void(0);">东莞市</a></li>
-                    <li><a href="javascript:void(0);">佛山市</a></li>
-                    <li><a href="javascript:void(0);">广州市</a></li>
-                    <li><a href="javascript:void(0);">深圳市</a></li>
-                    <li><a href="javascript:void(0);">东莞市</a></li>
-                    <li><a href="javascript:void(0);">佛山市</a></li>
-                </ul>
-            </div>
-            <div class="tab-panel tab-city"></div>
-            <div class="tab-panel tab-dist"></div>
-        </div>
-    </div>
+        <!--<div class="tab-content">-->
+            <!--<div class="tab-panel tab-prov active">-->
+                <!--<ul>-->
+                    <!--<li><a href="javascript:void(0);">广州市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">深圳市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">东莞市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">佛山市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">广州市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">深圳市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">东莞市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">佛山市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">广州市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">深圳市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">东莞市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">佛山市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">广州市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">深圳市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">东莞市</a></li>-->
+                    <!--<li><a href="javascript:void(0);">佛山市</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--<div class="tab-panel tab-city"></div>-->
+            <!--<div class="tab-panel tab-dist"></div>-->
+        <!--</div>-->
+    <!--</div>-->
 </body>
 
 <script type="text/javascript">
-
+    $("#area-select").JAreaSelect2({
+        prov : 12,
+        city : 125,
+        dist : 1306
+    });
 </script>
 
 </html>

@@ -2,74 +2,82 @@ $borderColor : #dddddd;
 $activeBorderColor : #edd28b;
 $linkTextColor : #cc0000;
 .jarea-select-box {
-  border: 1px solid $borderColor;
-  padding: 10px;
-  position: absolute;
+	border: 1px solid $borderColor;
+	padding: 10px;
+	position: absolute;
 
-  a {
-    font: 700 15px/30px 'microsoft yahei';
-    color: $linkTextColor;
-  }
+	a {
+		font: 700 15px/30px 'microsoft yahei';
+		color: $linkTextColor;
+	}
 
-  .tab-ul {
-    padding:0;
-    margin: 0;
-    clear: both;
-    word-spacing: 0px;
-    font-size: 0;
+	.tab-ul {
+		padding:0;
+		margin: 0;
+		clear: both;
+		word-spacing: 0px;
+		font-size: 0;
 
-    .tab-item {
-      list-style: none;
-      display: inline-block;
-      padding: 0px 5px;
-      margin: 0px 2px;
-      border: 1px solid $borderColor;
-      border-bottom: none;
-      a {text-decoration: none}
-      //padding: ;
-    }
+		.tab-item {
+			list-style: none;
+			display: inline-block;
+			padding: 0px 5px;
+			margin: 0px 2px;
+			border: 1px solid $borderColor;
+			border-bottom: none;
+			a {text-decoration: none}
+			//padding: ;
+		}
 
-    .tab-item.active {
-      border: 2px solid $activeBorderColor;
-      border-bottom: none;
-      position: relative;
-      top: 2px;
-      background-color: #ffffff;
-      z-index: 10;
-    }
-  }
+		.tab-item.active {
+			border: 2px solid $activeBorderColor;
+			border-bottom: none;
+			position: relative;
+			top: 2px;
+			background-color: #ffffff;
+			z-index: 10;
 
-  //选项卡内容panel
-  .tab-content {
-    border-top:2px solid $activeBorderColor;
-    width: 400px;
-    height: 200px;
+			a {color: #000000;}
+		}
+	}
 
-    .tab-panel {
-      ul {
-        margin: 0;
-        padding:0;
-        overflow: hidden;
-        clear: both;
+	//选项卡内容panel
+	.tab-content {
+		border-top:2px solid $activeBorderColor;
+		width: 400px;
 
-        li {
-          list-style: none;
-          float: left;
-          padding: 5px 24px;
+		.tab-panel {
+			display: none;
 
-          a {
-            font: 14px/150% Arial,Verdana,"\5b8b\4f53";
-            text-decoration: none;
-            display: block;
-            padding: 2px 5px;
+			ul {
+				margin: 0;
+				padding:5px 0px;
+				overflow: hidden;
+				clear: both;
 
-            &:hover {
-              background-color: $linkTextColor;
-              color: #ffffff ;
-            }
-          }
-        }
-      }
-    }
-  }
+				li {
+					list-style: none;
+					float: left;
+					width: 90px;
+					padding: 1px 5px;
+
+					a {
+						font: 14px/150% Arial,Verdana,"\5b8b\4f53";
+						text-decoration: none;
+						display: inline-block;
+						padding: 2px 5px;
+
+						&:hover {
+							background-color: $linkTextColor;
+							color: #ffffff ;
+						}
+					}
+				}
+			}
+		}//end tab-panel
+
+		.active {
+			display: block;
+		}
+	}
 }

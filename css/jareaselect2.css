@@ -27,26 +27,32 @@
       top: 2px;
       background-color: #ffffff;
       z-index: 10; }
+      .jarea-select-box .tab-ul .tab-item.active a {
+        color: #000000; }
   .jarea-select-box .tab-content {
     border-top: 2px solid #edd28b;
-    width: 400px;
-    height: 200px; }
-    .jarea-select-box .tab-content .tab-panel ul {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      clear: both; }
-      .jarea-select-box .tab-content .tab-panel ul li {
-        list-style: none;
-        float: left;
-        padding: 5px 24px; }
-        .jarea-select-box .tab-content .tab-panel ul li a {
-          font: 14px/150% Arial,Verdana,"\5b8b\4f53";
-          text-decoration: none;
-          display: block;
-          padding: 2px 5px; }
-          .jarea-select-box .tab-content .tab-panel ul li a:hover {
-            background-color: #cc0000;
-            color: #ffffff; }
+    width: 400px; }
+    .jarea-select-box .tab-content .tab-panel {
+      display: none; }
+      .jarea-select-box .tab-content .tab-panel ul {
+        margin: 0;
+        padding: 5px 0px;
+        overflow: hidden;
+        clear: both; }
+        .jarea-select-box .tab-content .tab-panel ul li {
+          list-style: none;
+          float: left;
+          width: 90px;
+          padding: 1px 5px; }
+          .jarea-select-box .tab-content .tab-panel ul li a {
+            font: 14px/150% Arial,Verdana,"\5b8b\4f53";
+            text-decoration: none;
+            display: inline-block;
+            padding: 2px 5px; }
+            .jarea-select-box .tab-content .tab-panel ul li a:hover {
+              background-color: #cc0000;
+              color: #ffffff; }
+    .jarea-select-box .tab-content .active {
+      display: block; }
 
 /*# sourceMappingURL=jareaselect2.css.map */
