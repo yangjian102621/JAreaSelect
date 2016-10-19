@@ -79,4 +79,23 @@ $linkTextColor : #cc0000;
 			display: block;
 		}
 	}
+
+	.close-btn {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		width: 25px;
+		text-align: center;
+		background-color: #F1F1F1;
+		height:25px;
+		line-height: 22px;
+		border-radius: 25px;
+		font-size: 16px;
+		color: #333333;
+
+		&:hover {
+			text-decoration: none;
+			background-color: #e1e1e1;
+		}
+	}
 }

@@ -88,6 +88,13 @@
 
 			$dom.areaBox.append($dom.tabul);
 			$dom.areaBox.append($tabContent);
+
+			//关闭按钮
+			var $close = $('<a href="#" class="close-btn">x</a>');
+			$close.on("click", function() {
+				$dom.areaBox.hide();
+			});
+			$dom.areaBox.append($close);
 			$container.append($dom.areaBox);
 
 			//绑定tab切换事件
