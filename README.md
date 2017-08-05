@@ -6,58 +6,61 @@ JAreaSelect
 
 插件描述:
 --------
-JAreaSelect区域选择插件是一个区域选择的js插件。提供1到4级的区域选择
+JAreaSelect区域选择插件是一个区域选择的js插件。数据是抓取京东的最新的区域数据。
+很全面，大约5000多条，涵盖了中国所有的地区，包括钓鱼岛在内。提供了普通样式和仿京东样式的小工具，另外还提供了一个超级简陋的管理界面，
+由于是个小项目，图省事，就不想引入什么框架的，直接原生写的，不喜欢请勿拍砖。
 
 插件依赖:
 -------
-* 纯js代码实现，无需引进第三方类库
+* jquery 1.1.1
 
 示例代码:
 -------
 ```html
     <!--html代码-->
-    <span id=”area_select_box”></span>
+    <p><button class="btn btn-primary">显示选中区域</button></p>
+    <div id="area-select-box" class="form-inline"></div>
 ```
 ```javascript
-    //js code
-   var select = new JAreaSelect({
-        data : AREA_DATA,
-        container : "area-select-box",
-        maxAreaLevel : 3,
-        showCountry : false,
-        ids : [1,0,0,0]
-    });
+    //普通样式
+   var area = $("#area-select-box").JAreaSelect({
+   	    prov : 1,
+   	    city : 72,
+   	    dist : 2839,
+   });
+   
+   $(".btn-primary").on('click', function() {
+       alert(area.getAreaString());
+       console.log(area.getAreaId());
+   });
+    
+   //仿京东样式
+   $("#area-select").JAreaSelect2({
+       prov : 1,
+       city : 72,
+       dist : 2839,
 
-    select.initAreas();
-    
-    //auto init
-    new JAreaSelect({
-        data : AREA_DATA,
-        container : "area-select-box",
-        maxAreaLevel : 3,
-        showCountry : false,
-        ids : [1,0,0,0],
-        autoInit : true
-    });
-    
+       callback : function(data) {
+        console.log(data);
+           $(".btn-primary").html(data.address);
+       }
+   });
+     
 ```
 option参数说明:
 -------------
 
 Key  | 类型   | 说明
 ---|--- | ---
-data | Object | 地区数据数组
-suffix| string  | select name属性前缀,默认为0，表示第1个区域选择器
-ids  | Array | 区域的初始化id
-container  | String | 区域选择器的容器,default area_select_box
-maxAreaLevel  | int | 选择器的最大选择级别，默认为第4级
-showCountry | boolean | 是否显示国家，默认为false不显示
-autoInit | boolean | 是否自动初始化
+selectClassName| string  | select class 属性，用来方便你调节UI的
+prov  | int | 初始化的省份ID
+city  | int | 初始化城市ID
+dist | int | 初始化地区ID
 
 效果截图:
 ------------
+#### 普通样式
 ![Alt text](images/area_select_img_1.png) <br/>
 
-####将 MaxmaxAreaLevel : 4 则会出现四级可选择
-
+#### 仿京东样式
 ![Alt text](images/area_select_img_2.png) <br/>
