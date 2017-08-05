@@ -35,10 +35,10 @@ $_table = "area";
 /**
  * 生成JavaScript数组
  */
-
+$timer = timer();
 $province = $mysql->getList("select * from {$_table} where pid=0");
 
-$p = ''; //身份
+$p = ''; //省份
 $c = ''; //城市
 $d = ''; //地区
 foreach ( $province as $value ) {
@@ -82,14 +82,12 @@ $buffer .= "\t'dist' : {";
 $buffer .= $d."}, \n";
 $buffer .= "};";
 
-
+echo timer() - $timer;
 if ( file_put_contents("../js/JAreaData.js", $buffer) !== FALSE ) {
 
 	echo '生成文件成功！';
 
 }
-
-
 
 /* print message */
 
@@ -103,5 +101,9 @@ function __print( $_msg ) {
 
 }
 
+function timer() {
+	list($msec, $sec) = explode(' ', microtime());
+	return ((float)$msec + (float)$sec);
+}
 ?>
 

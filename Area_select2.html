@@ -26,11 +26,12 @@
 <script type="text/javascript">
     $(".btn-primary").on("click", function() {
         $("#area-select").JAreaSelect2({
-            prov : 12,
-            city : 125,
-            dist : 1306,
+            prov : 1,
+            city : 72,
+            dist : 2839,
 
             callback : function(data) {
+            	console.log(data);
                 $(".btn-primary").html(data.address);
             }
         });

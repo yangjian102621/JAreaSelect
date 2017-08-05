@@ -19,12 +19,10 @@
 class mysql {
 
 	/**
-
-	 * true for debug 
-
+	 * true for debug
 	 */	
 
-	private $debug = FALSE;
+	private $debug = false;
 
 
 
@@ -114,25 +112,9 @@ class mysql {
 
 	/**
 
-	 * the construct method <br />
-
-	 * @access private
-
-	 */
-
-	private function __construct() {
-
-		//do nothing here
-
-	}
-
-	
-
-	/**
-
 	 * get the quoto the class
 
-	 * @return object : the quote to the class
+	 * @return mysql : the quote to the class
 
 	 */
 
@@ -190,7 +172,7 @@ class mysql {
 
 			}
 
-			//print the query string for debug	
+			//print the query string for debug
 
 			if ( $this->debug == TRUE ) {
 
@@ -198,7 +180,7 @@ class mysql {
 
 			}
 
-			
+
 
 			if ( ($result = mysqli_query($this->link, $query) ) !== FALSE ) {
 
@@ -318,7 +300,7 @@ class mysql {
 
 			}
 
-			
+
 
 			if ( $keys !== NULL ) {
 

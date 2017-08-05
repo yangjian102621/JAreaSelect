@@ -246,11 +246,11 @@ class page {
 
 		if ( $this->page_now <= 1 ) {
 
-			return '<span class="page_prev"><!--上一页--></span>';	
+			return '<li class="disabled"><a href="#">PREV</a></li>';
 
 		} else {
 
-			return '<a href="'.$this->page_url.'&pageNow='.($this->page_now-1).'" class="page_prev"><!--上一页--></a>';	
+			return '<li><a href="'.$this->page_url.'&pageNow='.($this->page_now-1).'">PREV</a></li>';
 
 		}		
 
@@ -268,11 +268,11 @@ class page {
 
 		if ( $this->page_now > 1 ) {
 
-			return '<a href="'.$this->page_url.'&pageNow=1" class="page_text">首页</a>';	
+			return '<li><a href="'.$this->page_url.'&pageNow=1">首页</a></li>';
 
 		} else {
 
-			return '<span  class="page_text">首页</span>';	
+			return '<li class="disabled"><a href="#">首页</a></li>';
 
 		}	
 
@@ -302,13 +302,13 @@ class page {
 
 			if ( $pageNow < 1 ) continue; 
 
-			$link_page .= '<a href="'.$this->page_url.'&pageNow='.$pageNow.'" class="page_list">'.$pageNow.'</a>';
+			$link_page .= '<li><a href="'.$this->page_url.'&pageNow='.$pageNow.'">'.$pageNow.'</a></li>';
 
 		}
 
 		//当前页
 
-		$link_page .= '<span class="page_now">'.$this->page_now.'</span>';
+		$link_page .= '<li class="active"><a href="#">'.$this->page_now.'</a></li>';
 
 		//后半部分
 
@@ -318,7 +318,7 @@ class page {
 
 			if ( $pageNow > $this->page_num ) break;
 
-			$link_page .= '<a href="'.$this->page_url.'&pageNow='.$pageNow.'" class="page_list">'.$pageNow.'</a>';
+			$link_page .= '<li><a href="'.$this->page_url.'&pageNow='.$pageNow.'">'.$pageNow.'</a></li>';
 
 		}
 
@@ -338,11 +338,11 @@ class page {
 
 		if ( $this->page_now < $this->page_num ) {
 
-			return '<a href="'.$this->page_url.'&pageNow='.$this->page_num.'" class="page_text">尾页</a>';	
+			return '<li><a href="'.$this->page_url.'&pageNow='.$this->page_num.'" class="page_text">尾页</a></li>';
 
 		} else {
 
-			return '<span class="page_text">尾页</span>';	
+			return '<li class="disabled"><a href="#">尾页</a></li>';
 
 		}		
 
@@ -360,11 +360,11 @@ class page {
 
 		if ( $this->page_now >= $this->page_num ) {
 
-			return '<span class="page_next"><!--下一页--></span>';	
+			return '<li class="disabled"><a href="#">NEXT</a></li>';
 
 		} else {
 
-			return '<a href="'.$this->page_url.'&pageNow='.($this->page_now+1).'" class="page_next"><!--下一页--></a>';	
+			return '<li><a href="'.$this->page_url.'&pageNow='.($this->page_now+1).'">NEXT</a></li>';
 
 		}		
 
@@ -374,25 +374,21 @@ class page {
 
 	public function show_page_handle() {
 
-		$html = '<div class="page_handle_box">';
+		$html = '<ul class="pagination">';
 
-		$html .= $this->page_prev();
+		$html .= '<li class="disabled"><a href="#">总记录:'.$this->rows_num.'</a></li>';
 
-		$html .= '<span class="page_text">总记录:'.$this->rows_num.'</span>';
-
-		$html .= '<span class="page_text">'.$this->page_now.'/'.$this->page_num.'</span>';
+        $html .= $this->page_prev();
 
 		$html .= $this->page_first();
 
 		$html .= $this->page_list();
 
-		$html .= $this->last_page();
-
-		$html .= '<span class="page_input_span"><input type="text" class="page_input" value="'.$this->page_now.'" onkeyup="javascript:if(event.keyCode==13){var page = this.value;window.location.href=\''.$this->page_url.'&pageNow=\'+page+\'\';}"/></span>';
-
 		$html .= $this->page_next();
 
-		$html .= '<div>';
+        $html .= $this->last_page();
+
+		$html .= '</ul>';
 
 		return $html;
 
