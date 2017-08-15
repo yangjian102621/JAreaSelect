@@ -112,7 +112,7 @@
 				var name = $(this).text();
 
 				$dom.prov.find("a").text(name);
-				$dom.prov.find("a").attr("data-id", id);
+				$dom.prov.find("a").data("id", id);
 
 				$dom.prov.next().find("a").html("请选择");
 				$dom.prov.next().next().hide();
@@ -141,7 +141,7 @@
 				var name = $(this).text();
 
 				$dom.city.find("a").text(name);
-				$dom.city.find("a").attr("data-id", id);
+				$dom.city.find("a").data("id", id);
 
 				if ( areaData.dist[id].length > 0 ) {
 					$dom.city.next().show();
@@ -172,7 +172,7 @@
 				var name = $(this).text();
 
 				$dom.dist.find("a").text(name);
-				$dom.dist.find("a").attr("data-id", id);
+				$dom.dist.find("a").data("id", id);
 
 				selectCompleted();
 			});

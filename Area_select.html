@@ -17,8 +17,9 @@
 
 <body>
 <div class="container" style="padding-top: 20px;">
-    <p><button class="btn btn-primary">显示选中区域</button></p>
+    <p><button class="btn btn-primary">获取地址</button></p>
     <div id="area-select-box" class="form-inline"></div>
+
 </div>
 
 </body>
@@ -27,11 +28,11 @@
 	    prov : 1,
 	    city : 72,
 	    dist : 2839,
+	    level : 3
     });
 
     $(".btn-primary").on('click', function() {
-        alert(area.getAreaString());
-        console.log(area.getAreaId());
+        $(this).text(area.getAreaString());
     });
 
 </script>

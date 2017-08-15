@@ -15,6 +15,7 @@
 			prov : 0, //省
 			city : 0, //市
 			dist : 0, //区
+			level : 3, //选到第几级，默认第三级（地区）
 			name : {
 				prov : 'province',
 				city : 'city',
@@ -80,32 +81,64 @@
 								}
 							});
 							$container.append(obj.dist);
+
 						}
 					});
 					$container.append(obj.city);
+					if ( options.level == 2 ) { //选择到城市一级
+						obj.city.off("change");
+					}
 					obj.city.trigger("change"); //自动触发事件
+
 				}
 
 			});
 			$container.append(obj.province);
+			if ( options.level == 1 ) { //选择到省一级
+				obj.province.off("change");
+			}
 			obj.province.trigger("change"); //自动触发事件
 		}
 
 		//获取区域id
 		obj.getAreaId = function() {
-			return {
-				prov : obj.province.val(),
-				city : obj.city ? obj.city.val() : 0,
-				dist : obj.dist ? obj.dist.val() : 0
-			};
+			return[
+				obj.province.val(),
+				obj.city ? obj.city.val() : 0,
+				obj.dist ? obj.dist.val() : 0
+			];
+		}
+
+		//获取省份名称
+		obj.getProvince = function() {
+			return obj.province.find("option:selected").html();
+		}
+
+		//获取城市名称
+		obj.getCity = function() {
+			try {
+				return obj.city.find("option:selected").html();
+			} catch (e) {
+				return "";
+			}
+		}
+
+		//获取地区名称
+		obj.getDist = function() {
+			try {
+				return obj.dist.find("option:selected").html();
+			} catch (e) {
+				return "";
+			}
 		}
 
 		//获取区域字符串
 		obj.getAreaString = function() {
-			var html = obj.province.find("option:selected").html();
+			var html = [];
+			html.push(obj.province.find("option:selected").html());
 			try {
-				html += obj.city.find("option:selected").html();
-				html += obj.dist.find("option:selected").html();
+				html.push(obj.city.find("option:selected").html());
+				html.push(obj.dist.find("option:selected").html());
 			} catch (e) {}
 			return html;
 		}
