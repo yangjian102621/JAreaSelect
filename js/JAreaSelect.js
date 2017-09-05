@@ -21,7 +21,9 @@
 				city : 'city',
 				dist : 'dist'
 			},
+			onSelected : function (id, name) { //选中时回调
 
+			},
 			selectClassName : 'form-control', //select class名称
 
 		};
@@ -32,7 +34,8 @@
 		//创建元素
 		obj.create = function() {
 
-			obj.province = $('<select class="'+options.selectClassName+'" name="'+options.name.prov+'"></select>');
+			obj.province = $('<select class="'+options.selectClassName+'" name="'+options.name.prov+'" required></select>');
+			obj.province.append('<option value="0" selected>全部</option>');
 			//加载所有省级
 			$.each(areaData.prov, function(id, name) {
 				if ( id == options.prov ) {
@@ -52,10 +55,12 @@
 				} catch (e) {}
 
 				var pid = $(this).val(); //获取省份id
+				options.onSelected(pid, $(this).find("option:selected").text());
 
 				if ( areaData.city[pid] && areaData.city[pid].length > 0 ) {
 
-					obj.city = $('<select class="'+options.selectClassName+'" name="'+options.name.city+'"></select>');
+					obj.city = $('<select class="'+options.selectClassName+'" name="'+options.name.city+'" required></select>');
+					obj.city.append('<option value="0" selected>全部</option>');
 					$.each(areaData.city[pid], function(i, item) {
 						if ( item.id == options.city ) {
 							obj.city.append('<option value="'+item.id+'" selected>'+item.name+'</option>');
@@ -71,8 +76,14 @@
 						//console.log(obj.getAreaString());
 
 						var cid = $(this).val();
+						options.onSelected(cid, $(this).find("option:selected").text());
+						if ( options.level == 2 ) { //选择到城市一级
+							return false;
+						}
+
 						if ( areaData.dist[cid] && areaData.dist[cid].length > 0 ) {
-							obj.dist = $('<select class="'+options.selectClassName+'" name="'+options.name.dist+'"></select>');
+							obj.dist = $('<select class="'+options.selectClassName+'" name="'+options.name.dist+'" required></select>');
+							obj.dist.append('<option value="0" selected>全部</option>');
 							$.each(areaData.dist[cid], function(i, item) {
 								if ( item.id == options.dist ) {
 									obj.dist.append('<option value="'+item.id+'" selected>'+item.name+'</option>');
@@ -80,14 +91,14 @@
 									obj.dist.append('<option value="'+item.id+'">'+item.name+'</option>');
 								}
 							});
+							obj.dist.on("change", function () {
+								options.onSelected($(this).val(), $(this).find("option:selected").text());
+							});
 							$container.append(obj.dist);
 
 						}
 					});
 					$container.append(obj.city);
-					if ( options.level == 2 ) { //选择到城市一级
-						obj.city.off("change");
-					}
 					obj.city.trigger("change"); //自动触发事件
 
 				}
@@ -147,4 +158,34 @@
 		return obj;
 
 	}
+
+	$.extend({
+		getAreaById : function (prov, city, dist) {
+			var s = [];
+			for (var o in __AREADATA__["prov"]) {
+				if (prov == o) {
+					s.push(__AREADATA__["prov"][o]);
+				}
+			}
+			if(city) {
+				for (var o in __AREADATA__["city"]) {
+					for (var k in __AREADATA__["city"][o]) {
+						if (__AREADATA__["city"][o][k]['id'] == city) {
+							s.push(__AREADATA__["city"][o][k]["name"]);
+						}
+					}
+				}
+			}
+			if(dist) {
+				for (var o in __AREADATA__["dist"]) {
+					for (var k in __AREADATA__["dist"][o]) {
+						if (__AREADATA__["dist"][o][k]['id'] == dist) {
+							s.push(__AREADATA__["dist"][o][k]["name"]);
+						}
+					}
+				}
+			}
+			return s;
+		}
+	})
 })(jQuery);
