@@ -1,6 +1,7 @@
 .jarea-select-box {
   border: 1px solid #dddddd;
   padding: 10px;
+  background:#FFFFFF;
   position: absolute; }
   .jarea-select-box a {
     font: 700 15px/30px 'microsoft yahei';
